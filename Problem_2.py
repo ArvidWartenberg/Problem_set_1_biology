@@ -80,7 +80,7 @@ colors = ['c', 'b', 'r', 'k', 'g', 'm', 'y']
 
 
 # Study the linear approximation of the system around the fixpoint 0
-plt.subplot(1,2,1)
+
 for i in range(len(N_0)):
     population = Population(K=K, r=r, b=b, N_0=N_0[i])
     N = population.run_time(steps=steps)
@@ -91,12 +91,13 @@ plt.axhline(y=K*r**(1/b), xmin=0, xmax=steps, linestyle=':', label='$N^{*}_{2}=K
 #plt.axis([0, 130, 0, K*r**(1/b)+300])
 plt.xlabel('Generation $\\tau$', fontsize=15)
 plt.ylabel('Population $N_{\\tau}$', fontsize=15)
-plt.title('Model behaviour for different $N_0$', fontsize=20)
-plt.legend(prop={"size":12})
+plt.title('Model behaviour for different $N_0$', fontsize=15)
+plt.legend(prop={"size":10})
+plt.tight_layout(True)
 
 # Now we want to analyze the second fixpoint
 N_0 = 100 + np.array([-10, -3, -2, -1, 1, 2, 3, 10])
-plt.subplot(1,2,2)
+plt.figure()
 for i in range(len(N_0)):
     c = np.random.rand(3, )
     population = Population(K=K, r=r, b=b, N_0=N_0[i])
@@ -109,8 +110,9 @@ plt.axhline(y=K*r**(1/b), xmin=0, xmax=steps, linestyle=':', label='$N^{*}_{2}=K
 #plt.axis([0, 130, 0, K*r**(1/b)+300])
 plt.xlabel('Generation $\\tau$', fontsize=15)
 plt.ylabel('Population $N_{\\tau}$', fontsize=15)
-plt.title('Model behaviour for different $N_0$', fontsize=20)
-plt.legend(prop={"size":12})
+plt.title('Model behaviour for different $N_0$', fontsize=15)
+plt.legend(prop={"size":10}, loc='lower right')
+plt.tight_layout(True)
 plt.show()
 
 

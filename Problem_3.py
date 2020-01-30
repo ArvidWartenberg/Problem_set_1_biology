@@ -29,14 +29,19 @@ R_vec = np.arange(1, 30, 0.1)
 eta_0 = 900
 tau = np.arange(0, 100, 1)
 
-plt.subplot(1, 2, 1)
 for R in R_vec:
     population = Population(alpha=alpha, R=R, eta_0=eta_0)
     eta = population.run_time(300)[-101:-1]
-    plt.scatter(np.ones(len(eta))*R, eta, marker='.', s=.1, c='b', alpha=.6, label='%.2f'%R)
+    plt.scatter(np.ones(len(eta))*R, eta, marker='.', s=.1, c='b', alpha=.6)
+
+plt.axvline(x=5, linestyle=':', c='g', label='Stable equilibrium')
+plt.axvline(x=10, linestyle='-.', c='k', label='2 point cycle')
+plt.axvline(x=13.5, linestyle='-', c='r', label='4 point cycle')
 plt.xlabel('$R$', fontsize=15)
 plt.ylabel('$\\eta$', fontsize=15)
-plt.title('Last $100$ values of $\\eta$ vs. $R$', fontsize=20)
+plt.title('Last $100$ values of $\\eta$ vs. $R$', fontsize=15)
+plt.legend(prop={"size":10}, loc='upper left')
+plt.tight_layout(True)
 
 
 # We see in the plot generated above that R around 5 gives 1 periodicity (constant),
@@ -45,7 +50,7 @@ plt.title('Last $100$ values of $\\eta$ vs. $R$', fontsize=20)
 # (periodicity <=> cycle)
 
 
-plt.subplot(1, 2, 2)
+plt.figure()
 steps = 30
 population_1 = Population(alpha=alpha, R=5, eta_0=eta_0)
 eta_1 = population_1.run_time(steps)
@@ -63,8 +68,9 @@ plt.plot(tau, eta_3, alpha=.3, c='k') # 4 point cycle
 plt.scatter(tau, eta_3, alpha=1, c='k', marker='x', label='4 point cycle, $R=13.5$') # 4 point cycle
 plt.xlabel('$\\tau$', fontsize=15)
 plt.ylabel('$N_{\\tau}$', fontsize=15)
-plt.title('System behaviour for different R', fontsize=20)
+plt.title('System behaviour for different $R$', fontsize=15)
 plt.legend(prop={"size":12})
+plt.tight_layout(True)
 plt.legend()
 plt.show()
 

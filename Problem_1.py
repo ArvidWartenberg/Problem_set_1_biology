@@ -65,18 +65,18 @@ for T_i in T:
 
     plt.plot(t, N, label='T=%.2f'%(T_i), linewidth=2, alpha=1)
     plt.title('Model behaviour for different time delays T', fontsize=15)
-    plt.xlabel('Time [unit time]', fontsize=12)
-    plt.ylabel('Population size [members]', fontsize=12)
+    plt.xlabel('Time [unit time]', fontsize=15)
+    plt.ylabel('Population size [members]', fontsize=15)
     #plt.subplot(1, 2, 2)
     #plt.plot(t, N_dot, label='T=%.2f'%(T_i), linewidth=2, alpha=1)
     #plt.title('Model behaviour for different time delays T', fontsize=15)
     #plt.xlabel('Time [unit time]', fontsize=12)
     #plt.ylabel('Population growth [members/unit time]', fontsize=12)
 plt.subplot(1, 2, 1)
-plt.legend()
+plt.legend(prop={"size":10}, loc='lower right')
 plt.grid(True)
 plt.subplot(1, 2, 2)
-plt.legend()
+plt.legend(prop={"size":10}, loc='lower right')
 plt.grid(True)
 
 
@@ -132,7 +132,7 @@ for i in [1, 2, 3, 4]:
     N_dot = population.N_dot
 
     plt.plot(N, N_dot, label='T=%.2f'%(T_H[i-1]), linewidth=2, alpha=1)
-    plt.title('%i simulated steps with T=%.3f'%(simulation_steps[i-1], T_H[i-1]), fontsize=15)
+    plt.title('%i e4 simulated steps with T=%.1f'%(int(simulation_steps[i-1]/10000), T_H[i-1]), fontsize=12)
     plt.xlabel('$N$ [members]', fontsize=12)
     plt.ylabel('$\dfrac{dN}{dt}$ [members/unit time]', fontsize=12)
     plt.legend()
